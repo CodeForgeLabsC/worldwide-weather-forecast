@@ -19,7 +19,7 @@ test('opens and renders the default dashboard', async ({ page }) => {
   await page.goto('/')
 
   await expect(page.getByRole('application', { name: 'World map' })).toBeVisible()
-  await expect(page.getByText('Meridian')).toBeVisible()
+  await expect(page.getByText('G-Forecast')).toBeVisible()
   await expect(page.getByLabel('Current weather')).toBeVisible()
   await expect(page.getByLabel(/Local time/)).toBeVisible()
   await expect(page.getByLabel('7-day forecast')).toBeVisible()

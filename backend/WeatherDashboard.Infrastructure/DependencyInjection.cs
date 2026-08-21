@@ -47,7 +47,7 @@ public static class DependencyInjection
             var options = serviceProvider.GetRequiredService<IOptions<EncyclopediaOptions>>().Value;
             client.BaseAddress = new Uri(options.BaseUrl);
             client.Timeout = TimeSpan.FromSeconds(options.TimeoutSeconds);
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("MeridianWeatherDashboard/1.0");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("GForecastWeatherDashboard/1.0");
         });
 
         services.AddScoped<IGeocodingProvider>(sp => sp.GetRequiredService<OpenMeteoGeocodingProvider>());

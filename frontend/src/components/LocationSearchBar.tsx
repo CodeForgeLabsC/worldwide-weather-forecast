@@ -48,6 +48,19 @@ export function LocationSearchBar({ onSelectCity }: LocationSearchBarProps) {
     if (event.key === 'Escape') {
       setIsOpen(false)
       event.currentTarget.blur()
+      return
+    }
+
+    if (event.key === 'Enter') {
+      if (!data || data.length === 0) {
+        return
+      }
+
+      event.preventDefault()
+
+      const typed = query.trim().toLowerCase()
+      const exactMatch = data.find((result) => result.name.toLowerCase() === typed)
+      handleSelect(exactMatch ?? data[0])
     }
   }
 
@@ -78,7 +91,8 @@ export function LocationSearchBar({ onSelectCity }: LocationSearchBarProps) {
         <div
           role="listbox"
           aria-label="Search results"
-          className="glass-panel absolute inset-x-0 top-full z-10 mt-2 max-h-80 overflow-y-auto rounded-xl p-1.5"
+          className="glass-panel absolute inset-x-0 top-full z-[1100] mt-2 max-h-80 overflow-y-auto rounded-xl p-1.5"
+          style={{ backgroundColor: 'rgb(255 255 255 / 0.8)' }}
         >
           {isSearching ? (
             <div className="flex items-center gap-2 px-3 py-4 text-sm text-ink-muted">

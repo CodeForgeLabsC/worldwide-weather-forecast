@@ -1,4 +1,4 @@
-# Meridian — Weather & Local-Time Dashboard
+# G-Forecast — Weather & Local-Time Dashboard
 
 A global weather and local-time intelligence dashboard: a full-screen interactive world map
 with glass panels for current weather, local time, and a 7-day forecast floating on top.

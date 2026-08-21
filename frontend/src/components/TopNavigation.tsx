@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Globe2, Menu, X } from 'lucide-react'
+import { CloudSun, Menu, X } from 'lucide-react'
 import { LocationPresetNavigation } from './LocationPresetNavigation'
 import { NotificationButton } from './NotificationButton'
 import { SettingsButton } from './SettingsButton'
@@ -11,8 +11,12 @@ export function TopNavigation() {
     <header className="pointer-events-none absolute inset-x-0 top-0 z-20 p-3 sm:p-4">
       <div className="glass-panel pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full px-3 py-2 sm:px-4 sm:py-2.5">
         <div className="flex items-center gap-2">
-          <Globe2 className="size-5 text-accent" aria-hidden="true" />
-          <span className="text-sm font-semibold tracking-wide text-ink">Meridian</span>
+          <span className="flex size-7 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-strong shadow-[0_2px_10px_-2px_rgb(37_99_235_/_0.55)]">
+            <CloudSun className="size-4 text-white" aria-hidden="true" />
+          </span>
+          <span className="text-sm font-bold tracking-tight text-ink">
+            G<span className="text-accent-strong">-</span>Forecast
+          </span>
         </div>
 
         <LocationPresetNavigation className="hidden md:flex" />
