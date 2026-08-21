@@ -8,7 +8,7 @@ public static class PresetLocations
 {
     public static readonly IReadOnlyList<PresetLocation> All = new List<PresetLocation>
     {
-        new("california-us", "California", "Los Angeles", "United States", "US",
+        new("california-us", "US", "Los Angeles", "United States", "US",
             new Coordinates(34.0522, -118.2437), "America/Los_Angeles"),
         new("poland", "Poland", "Warsaw", "Poland", "PL",
             new Coordinates(52.2297, 21.0122), "Europe/Warsaw"),

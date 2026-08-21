@@ -1,7 +1,7 @@
 import { usePresetLocations } from '@/hooks/usePresetLocations'
 import { useActiveLocation } from '@/stores/LocationContext'
 import { presetToActiveLocation } from '@/lib/locationMapping'
-import { countryCodeToFlagEmoji } from '@/utils/flag'
+import { WavingFlag } from './WavingFlag'
 import { cn } from '@/lib/cn'
 
 interface LocationPresetNavigationProps {
@@ -37,9 +37,7 @@ export function LocationPresetNavigation({ className, onSelect }: LocationPreset
                 : 'text-ink-muted hover:bg-slate-900/5 hover:text-ink',
             )}
           >
-            <span aria-hidden="true" className="text-xs">
-              {countryCodeToFlagEmoji(preset.countryCode)}
-            </span>
+            <WavingFlag countryCode={preset.countryCode} className="h-3 w-4" />
             {preset.label}
           </button>
         )

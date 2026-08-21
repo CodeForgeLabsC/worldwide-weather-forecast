@@ -137,6 +137,40 @@
   }
 }
 
+@keyframes flag-flutter {
+  0%,
+  100% {
+    transform: perspective(140px) rotateY(0deg) skewY(0deg);
+  }
+  25% {
+    transform: perspective(140px) rotateY(-10deg) skewY(2deg);
+  }
+  50% {
+    transform: perspective(140px) rotateY(0deg) skewY(-1.5deg);
+  }
+  75% {
+    transform: perspective(140px) rotateY(10deg) skewY(1.5deg);
+  }
+}
+
+.waving-flag > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  animation: flag-flutter 3.6s ease-in-out infinite;
+}
+
+@keyframes flag-drift {
+  0%,
+  100% {
+    transform: translate(-4%, -2%) scale(1.05);
+  }
+  50% {
+    transform: translate(4%, 2%) scale(1.12);
+  }
+}
+
 @keyframes backdrop-fade-in {
   from {
     opacity: 0;

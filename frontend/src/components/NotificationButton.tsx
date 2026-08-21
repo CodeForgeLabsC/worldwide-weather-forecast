@@ -39,7 +39,7 @@ export function NotificationButton() {
         <Icon className="size-4" aria-hidden="true" />
       </button>
       {isOpen && (
-        <div className="glass-panel absolute right-0 top-full mt-2 w-80 rounded-xl p-4">
+        <div className="glass-panel absolute right-0 top-full z-[1100] mt-2 w-80 rounded-xl p-4">
           <NotificationSettings permission={permission} onPermissionChange={setPermission} />
         </div>
       )}

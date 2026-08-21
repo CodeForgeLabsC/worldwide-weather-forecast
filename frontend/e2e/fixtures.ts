@@ -3,7 +3,7 @@ import type { Page } from '@playwright/test'
 export const PRESETS = [
   {
     id: 'california-us',
-    label: 'California',
+    label: 'US',
     city: 'Los Angeles',
     country: 'United States',
     countryCode: 'US',
