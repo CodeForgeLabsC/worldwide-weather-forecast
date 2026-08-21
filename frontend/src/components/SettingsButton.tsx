@@ -36,7 +36,7 @@ export function SettingsButton() {
         <Settings className="size-4" aria-hidden="true" />
       </button>
       {isOpen && (
-        <div className="glass-panel absolute right-0 top-full z-[1100] mt-2 w-56 rounded-xl p-4">
+        <div className="glass-panel-solid absolute right-0 top-full z-[1100] mt-2 w-56 rounded-xl p-4">
           <h2 className="text-sm font-semibold text-ink">Units</h2>
           <div className="mt-3 space-y-3">
             <UnitToggle

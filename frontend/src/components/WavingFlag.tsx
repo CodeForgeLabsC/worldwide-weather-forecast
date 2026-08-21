@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react'
+import { useId, type ComponentType, type CSSProperties } from 'react'
 import { cn } from '@/lib/cn'
 
 /**
@@ -105,22 +105,41 @@ interface WavingFlagProps {
 }
 
 /**
- * A small flag that flutters in place via a CSS transform loop (see `.waving-flag` in
- * index.css) rather than a static unicode flag emoji, which several Linux font stacks render
- * as flat two-letter fallback text instead of a real flag glyph. Each country gets a stable
- * animation offset (hashed from its code) so a row of flags doesn't flutter in lockstep.
+ * A small flag that flies in place — a mast-sway transform (`flag-flutter` in index.css)
+ * layered with an animated SVG turbulence filter that displaces the cloth itself, rather than a
+ * static unicode flag emoji, which several Linux font stacks render as flat two-letter fallback
+ * text instead of a real flag glyph. Each country gets a stable animation offset and noise seed
+ * (hashed from its code) so a row of flags doesn't ripple in lockstep.
  */
 export function WavingFlag({ countryCode, className }: WavingFlagProps) {
   const code = countryCode?.toUpperCase()
   const Flag = code ? CURATED_FLAGS[code] : undefined
-  const delay = ((code ? hashCode(code) : 0) % 10) / 10
+  const hash = code ? hashCode(code) : 0
+  const delay = (hash % 10) / 10
+  const filterId = useId()
+  const seed = hash % 20
 
   return (
     <span
       aria-hidden="true"
       className={cn('waving-flag inline-block overflow-hidden rounded-[2px] ring-1 ring-black/10', className)}
-      style={{ animationDelay: `${delay}s` }}
+      style={{ animationDelay: `${delay}s`, '--flag-wave-filter': `url(#${filterId})` } as CSSProperties}
     >
+      <svg className="waving-flag__defs" aria-hidden="true" focusable="false">
+        <defs>
+          <filter id={filterId} x="-20%" y="-30%" width="140%" height="160%">
+            <feTurbulence type="fractalNoise" numOctaves="2" seed={seed} result="noise">
+              <animate
+                attributeName="baseFrequency"
+                dur={`${4.5 + delay}s`}
+                values="0.01 0.06;0.025 0.09;0.01 0.06"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
       {Flag ? <Flag /> : <AbstractFlag countryCode={code ?? '??'} />}
     </span>
   )
