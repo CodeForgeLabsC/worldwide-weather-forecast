@@ -60,7 +60,8 @@ export function LocationSearchBar({ onSelectCity }: LocationSearchBarProps) {
 
       const typed = query.trim().toLowerCase()
       const exactMatch = data.find((result) => result.name.toLowerCase() === typed)
-      handleSelect(exactMatch ?? data[0])
+      const result = exactMatch ?? data[0];
+      if (result) handleSelect(result);
     }
   }
 
